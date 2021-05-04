@@ -1,0 +1,50 @@
+<?php
+/**
+ * @var $block \Mirasvit\Giftr\Block\Item\Add
+ */ ?>
+
+<div class="giftr-list" style="display: none;"
+     data-block="giftr-modal"
+     data-role="dropdownDialog"
+     data-bind="scope: 'giftr-addto__form'"
+     data-mage-init='{"GiftPopup":{}}'>
+    <div class="registry-list" data-bind="visible: hasRegistries">
+
+        <h3 class="select-gift"><?= __('Select gift registry') ?></h3>
+
+        <div class="select-box">
+            <span id="registry-popup-message"><?= __('Select gift registry...') ?></span>
+            <div id="list-selections" class="select-box__current registries" tabindex="1" data-bind="foreach: registries">
+
+                <div class="select-box__value">
+
+                    <input type="radio" class="select-box__input" name="Giftr" value="" id="0"
+                           data-bind="checked: $parent.selected, value: value, attr: { id: value }">
+                    <span class="select-box__input-text" data-bind="text: label"></span>
+
+                </div>
+
+            </div>
+            <ul class="select-box__list registries" data-bind="foreach: registries">
+                <li>
+                    <label name="list" aria-hidden="aria-hidden" for="registry_" class="select-box__option"
+                           data-bind=" attr: { for: value }">
+                        <span data-bind="text: label"></span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+
+        <button id="confirm-add-to-registry" href="#"
+                data-bind="click: addProduct"><?= __('Add to gift registry') ?></button>
+    </div>
+
+    <div data-bind="visible: isMessageVisible()">
+        <span data-bind="html: getMessage()"></span>
+    </div>
+</div>
+
+
+
+
+

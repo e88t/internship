@@ -1,0 +1,142 @@
+sudo chmod 777 app/etc/config.php
+cd /var/www/magento/
+sudo chmod 777 -R var/ pub/ generated/
+
+sudo su -l www-data -s /bin/bash
+cd /var/www/magento/ && export XDEBUG_CONFIG="remote_host=host.docker.internal"
+php bin/magento setup:up
+
+sudo -uwww-data php bin/magento ca:fl
+sudo -uwww-data php bin/magento setup:up
+sudo -uwww-data php bin/magento setup:db-declaration:generate-whitelist --module-name=Elogic_VismaCatalogRule
+sudo -uwww-data php bin/magento setup:db-declaration:generate-whitelist --module-name=Elogic_VismaCatalogRuleStaging
+sudo -uwww-data php bin/magento setup:db-declaration:generate-whitelist --module-name=Elogic_VismaDiscountRule
+sudo -uwww-data php bin/magento deploy:mode:set production
+rm -rf generated/* && sudo -uwww-data php bin/magento s:d:c
+sudo -uwww-data php bin/magento ca:di full_page
+sudo -uwww-data php bin/magento in:reset catalogrule_rule
+sudo -uwww-data php bin/magento in:reind catalogrule_rule
+sudo -uwww-data php bin/magento cron:run
+sudo -uwww-data php ./vendor/bin/ece-tools patch
+sudo -uwww-data php bin/magento setup:static-content:deploy -f -a frontend --theme Myglass/base
+sudo -uwww-data php bin/magento setup:static-content:deploy en_US -f -a frontend --theme Myglass/base && \
+sudo -uwww-data php bin/magento setup:static-content:deploy en_US -f -a adminhtml
+
+sudo chmod 777 app/etc/config.php && sudo -uwww-data php bin/magento setup:up && sudo -uwww-data php bin/magento ca:di full_page && sudo -uwww-data php bin/magento s:d:c && sudo -uwww-data grunt exec:all && sudo -uwww-data grunt less
+
+sudo -uwww-data grunt exec:all && sudo -uwww-data grunt less
+sudo -uwww-data grunt watch
+
+#sudo -uwww-data grunt exec:nego_home4
+sudo -uwww-data bin/magento setup:perf:generate-fixtures /media/elogic-dev/AdditionalDrive/projects/myglass/magento/setup/performance-toolkit/profiles/ce/small.xml
+sudo -uwww-data bin/magento setup:perf:generate-fixtures setup/performance-toolkit/profiles/ee/my_small.xml
+
+sudo -uwww-data php bin/magento app:config:import
+
+
+sudo -uwww-data php bin/magento config:set --lock-config --scope="store" --scope-code="be_en" general/country/default BE
+sudo -uwww-data php bin/magento config:set --lock-config address_autocomplete/main/country AT,BE,FR,DE,LU,NL,LI,CH
+sudo -uwww-data php bin/magento config:set --lock-env smtp/general/enabled 0
+sudo -uwww-data php bin/magento config:set --lock-env smile_elasticsuite_core_base_settings/indices_settings/alias benum
+
+sudo -uwww-data php bin/magento config:set --lock-env --scope="stores" --scope-code="admin" web/unsecure/base_url http://carbon38m2.site/
+sudo -uwww-data php bin/magento config:set --lock-env --scope="websites" --scope-code="base" web/secure/enable_upgrade_insecure 0
+sudo -uwww-data php bin/magento config:set --lock-env admin/url/custom http://carbon38m2.site/admin
+sudo -uwww-data php bin/magento config:set --lock-env newrelicreporting/general/enable 0
+sudo -uwww-data php bin/magento config:set --lock-env algoliasearch_credentials/credentials/index_prefix c38_local777_
+
+general/region/state_required AT,BE,FR,DE,LI,LU,NL,CH
+
+cd /var/www/html/magento2/nginx-proxy-fork/ && sudo service apache2 stop && sudo service mysql stop && docker-compose up -d
+sudo -uwww-data php bin/magento mod:di Niks_LayeredNavigation
+sudo -uwww-data php bin/magento mod:en Ot_Tranzila Ot_TranzilaRedirectIframe
+sudo -uwww-data php bin/magento mod:en Mirasvit_LayeredNavigation Mirasvit_Brand Mirasvit_Scroll Mirasvit_AllProducts Mirasvit_SeoNavigation Mirasvit_Sorting
+mysql -hdb -umagento2 -p rubberloft_13042020 < rubber_new.13.04.2020.sql
+
+#export XDEBUG_CONFIG="idekey=PHPSTORM"
+#php -dxdebug.idekey=PHPSTORM
+#export XDEBUG_CONFIG="remote_connect_back=1 remote_enable=1 idekey=PHPSTORM"
+#export PHP_IDE_CONFIG="serverName=localhost"
+#printenv | grep XDEBUG_CONFIG
+#export PHP_IDE_CONFIG="serverName=Xdebug"
+docker-compose run --rm cli bash
+
+
+sudo -uwww-data bin/magento setup:install --base-url=http://myglass.site/ \
+--db-host=db --db-name=myglass_20200722 --db-user=root --db-password=root \
+--admin-firstname=AdminFirstName --admin-lastname=AdminLastName --admin-email=dummy@gmail.com \
+--admin-user=admin --admin-password=admin123 --backend-frontname=admin --use-rewrites=1
+
+sudo -uwww-data php bin/magento admin:user:create --admin-user=admin --admin-password=admin123 \
+--admin-email=dummy@gmail.com --admin-firstname=AdminFirstName --admin-lastname=AdminLastName
+
+cd /var/www/ && sudo chown -R www-data:www-data magento/ && sudo chmod -R g+w magento/ && cd /var/www/magento/
+rm -rf var/cache && rm -rf var/page_cache && rm -rf var/session && rm -rf var/generation/* && rm -rf generated/*
+rm -rf var/view_preprocessed && rm -rf pub/static/*
+
+chown -R www-data:www-data vendor/ && sudo chmod -R g+w vendor/
+chown -R www-data:www-data var/log/ && sudo chmod -R g+w var/log/
+chown -R www-data:www-data app/ && sudo chmod -R g+w app/
+
+composer config --auth http-basic.dist.aheadworks.com xxxxx yyyyyyy
+
+
+require('uiRegistry').get(function(c){console.log(c.name);});
+
+var errMsg = [
+                {type: "success", text: "Thank you for registering with Umovis USA."},
+                {type: "success", text: "You saved the address."},
+                {type: "notice", text: "You must have a Subscription-based product in the cart to process the order!"},
+                {type: "error", text: "The requested qty exceeds the maximum qty allowed in shopping cart"}
+            ];
+            $.cookieStorage.set('mage-messages', errMsg);
+====================
+SELECT CONCAT("ALTER DEFINER=`magento2`@`%` VIEW ",
+table_name, " AS ", view_definition, ";")
+FROM information_schema.views
+WHERE table_schema='myglass_20201209';
+
+SELECT *
+FROM information_schema.views
+WHERE table_schema='myglass_20201209';
+
+ALTER DEFINER=`magento2`@`%` VIEW inventory_stock_1 AS select distinct `legacy_stock_status`.`product_id` AS `product_id`,`legacy_stock_status`.`website_id` AS `website_id`,`legacy_stock_status`.`stock_id` AS `stock_id`,`legacy_stock_status`.`qty` AS `quantity`,`legacy_stock_status`.`stock_status` AS `is_salable`,`product`.`sku` AS `sku` from (`myglass_20201209`.`cataloginventory_stock_status` `legacy_stock_status` join `myglass_20201209`.`catalog_product_entity` `product` on(`legacy_stock_status`.`product_id` = `product`.`entity_id`));
+======================
+
+./.git/
+./.idea/
+./generated/*
+./node_modules/
+./pub/media/*
+./pub/static/*
+./update/*
+./var
+./vendor/*
+
+
+
+======================
+Entity with Array to ExtensionInterface
+======================
+/** @var RuleExtensionInterface $extensionAttributes */
+if ($entity->getExtensionAttributes() && is_array($entity->getExtensionAttributes())) {
+    $this->dataObjectHelper->populateWithArray($entity, $entity->getData(), RuleInterface::class);
+}
+
+======================
+Entity with ExtensionInterface to Array
+======================
+$ruleArray = $this->extensibleDataObjectConverter->toFlatArray(
+    $rule,
+    [],
+    RuleInterface::class
+);
+
+======================
+EntityData with ExtensionInterface to Array
+======================
+ $ruleData['extension_attributes'] = $this->extensionAttributesProcessor
+    ->buildOutputDataArray(
+        $ruleData['extension_attributes'],
+        RuleExtensionInterface::class
+    );

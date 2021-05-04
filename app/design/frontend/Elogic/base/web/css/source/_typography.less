@@ -1,0 +1,214 @@
+// /**
+//  * Copyright © Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    //
+    //  OpenSans
+    //  _____________________________________________
+
+    .lib-font-face(
+        @family-name: @font-family-open-sans,
+        @font-path: '@{baseDir}fonts/opensans/light/opensans-300',
+        @font-weight: 300,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-open-sans,
+        @font-path: '@{baseDir}fonts/opensans/regular/opensans-400',
+        @font-weight: 400,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-open-sans,
+        @font-path: '@{baseDir}fonts/opensans/semibold/opensans-600',
+        @font-weight: 600,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-open-sans,
+        @font-path: '@{baseDir}fonts/opensans/bold/opensans-700',
+        @font-weight: 700,
+        @font-style: normal,
+        @font-display: swap
+    );
+
+    //
+    //  Poppins
+    //  _____________________________________________
+
+    .lib-font-face(
+        @family-name: @font-family-poppins,
+        @font-path: '@{baseDir}fonts/poppins/Poppins-Thin',
+        @font-format: 'ttf',
+        @font-weight: 300,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+
+
+    .lib-font-face(
+        @family-name: @font-family-poppins,
+        @font-path: '@{baseDir}fonts/poppins/Poppins-Regular',
+        @font-format: 'ttf',
+        @font-weight: 400,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-poppins,
+        @font-path: '@{baseDir}fonts/poppins/Poppins-Medium',
+        @font-format: 'ttf',
+        @font-weight: 500,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-poppins,
+        @font-path: '@{baseDir}fonts/poppins/Poppins-SemiBold',
+        @font-format: 'ttf',
+        @font-weight: 600,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-poppins,
+        @font-path: '@{baseDir}fonts/poppins/Poppins-Bold',
+        @font-format: 'ttf',
+        @font-weight: 700,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+
+    //
+    //  Oswald
+    //  _____________________________________________
+
+    .lib-font-face(
+        @family-name: @font-family-oswald,
+        @font-path: '@{baseDir}fonts/oswald/Oswald-Light',
+        @font-format: 'ttf',
+        @font-weight: 300,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+
+
+    .lib-font-face(
+        @family-name: @font-family-oswald,
+        @font-path: '@{baseDir}fonts/oswald/Oswald-Regular',
+        @font-format: 'ttf',
+        @font-weight: 400,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+
+    .lib-font-face(
+        @family-name: @font-family-oswald,
+        @font-path: '@{baseDir}fonts/oswald/Oswald-Medium',
+        @font-format: 'ttf',
+        @font-weight: 500,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+
+
+    .lib-font-face(
+        @family-name: @font-family-oswald,
+        @font-path: '@{baseDir}fonts/oswald/Oswald-Bold',
+        @font-format: 'ttf',
+        @font-weight: 700,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+
+    //
+    //  Awesome
+    //  _____________________________________________
+
+    .lib-font-face(
+        @family-name: @font-awesome,
+        @font-path: '@{baseDir}fonts/awesome/fa-brands-400',
+        @font-format: 'woff',
+        @font-weight: 500,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+    .lib-font-face(
+        @family-name: @font-awesome,
+        @font-path: '@{baseDir}fonts/awesome/fa-regular-400',
+        @font-format: 'woff',
+        @font-weight: 400,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+    .lib-font-face(
+        @family-name: @font-awesome,
+        @font-path: '@{baseDir}fonts/awesome/fa-light-300',
+        @font-format: 'woff',
+        @font-weight: 300,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+    .lib-font-face(
+        @family-name: @font-awesome,
+        @font-path: '@{baseDir}fonts/awesome/fa-solid-900',
+        @font-format: 'woff',
+        @font-weight: 900,
+        @font-style: normal,
+        @font-display: swap,
+        @font-type: 'truetype'
+    );
+}
+
+
+
+
+
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    h1 {
+        .lib-css(font-size, @h1__font-size-desktop);
+        .lib-css(margin-bottom, @h1__margin-bottom__desktop);
+    }
+}
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .items {
+        .lib-list-reset-styles();
+    }
+}
