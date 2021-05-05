@@ -1,263 +1,268 @@
-////
-////  Common (styles-m.css)
-////  _____________________________________________
-//& when (@media-common = true) {
 //
-//    .giftr-list {
-//        z-index: 200;
-//    }
+//  Common
+//  _____________________________________________
+& when (@media-common = true) {
+    .giftr-list {
+
+        span {
+            .lib-font-size(@font-size__l);
+            >a {
+                .lib-css(color, @color-red9);
+            }
+        }
+    }
+
+    .popup_custom_giftr {
+        .lib-vendor-prefix-display();
+            &:before {
+                display: none;
+            }
+        position: fixed;
+        align-content: center;
+        justify-content: center;
+        border-radius: 0;
+        width: 23%;
+        height: auto;
+        border: 0;
+        justify-content: center;
+        left: 40%;
+        min-width: 230px;
+    }
+    .modal-slide .modal-inner-wrap{
+        overflow-y: visible;
+        width: 100%;
+    }
+    .select-box {
+        position: relative;
+        display: block;
+        .lib-css(width, @table__width);
+        margin: 0 auto;
+        .lib-css(font-family, @font-family-name__base);
+        .lib-font-size(@font-size__l);
+        .lib-css(color, @color-elogic-gray2);
+    }
+
+    .registry-list {
+
+
+        display: block;
+    }
+
+    .ui-dialog-content {
+        .lib-css(background, @color-white);
+        .lib-css(width, @table__width);
+        padding: 1%;
+    }
+
+    .add-to-giftr div {
+        .giftr-dropdown {
+            label {
+                padding-top: 1px;
+                border-bottom: 0;
+            }
+        }
+    }
+
+    .add-to-giftr div.giftr-dropdown {
+        opacity: 1;
+    }
+
+    .select-gift {
+        .lib-css(color, @color-elogic-black1);
+        .lib-css(font-weight, @font-weight__semibold);
+        .lib-font-size(@font-size__mms);
+    }
+
+    #confirm-add-to-registry {
+        .lib-css(background-color, @color-elogic-black1);
+        .lib-css(color, @color-white);
+        text-align: center;
+        .lib-css(width, @table__width);
+        margin-top: 5%;
+        text-transform: uppercase;
+        padding: 6%;
+        box-shadow: none;
+    }
+
+    .ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.giftr-dropdown {
+        .lib-vendor-prefix-display();
+
+        &:before {
+            display: none;
+        }
+
+        .lib-css(background-color, @color-white);
+        top: 40%;
+        position: fixed;
+        align-content: center;
+        justify-content: center;
+        border-radius: 0;
+        width: 20%;
+        height: max-content;
+        border: 0;
+        .lib-vendor-box-align(center);
+        left: 40%;
+        min-width: 230px;
+    }
+
+    .add-to-giftr div.giftr-dropdown label:last-child {
+        padding: 4% !important;
+    }
+
+    .select-box {
+        &__list {
+            position: absolute;
+            .lib-css(width, @table__width);
+            .lib-list-reset-styles();
+            opacity: 0;
+            -webkit-animation-name: HideList;
+            animation-name: HideList;
+            -webkit-animation-duration: 0.5s;
+            animation-duration: 0.5s;
+            -webkit-animation-delay: 0.5s;
+            animation-delay: 0.5s;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+            -webkit-animation-timing-function: step-start;
+            animation-timing-function: step-start;
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+            .lib-css(border, 1px solid @color-elogic-gray2);
+            .lib-css(background, @color-white);
+
+            li {
+                margin: 0;
+            }
+        }
+        &__option {
+            display: block;
+            padding: 15px;
+            .lib-css(background, @color-white);
+            &:hover, &:focus {
+                .lib-css(color, @color-white);
+                .lib-css(background-color, @color-elogic-black1);
+            }
+        }
+        &__current {
+            position: relative;
+            .lib-css(border, 1px solid @color-elogic-gray2);
+            cursor: pointer;
+            outline: none;
+            border-radius: 4px;
+            width: 100%;
+            height: 58px;
+            &.open + .select-box__list {
+                opacity: 1;
+                -webkit-animation-name: none;
+                animation-name: none;
+                .lib-css(border, 1px solid @color-elogic-gray2);
+                .lib-css(background, @color-white);
+
+                .select-box__option {
+                    cursor: pointer;
+                }
+            }
+            &.open {
+                .lib-icon-font(
+                    @_icon-font-content:'\f0d8',
+                    @_icon-font: @font-awesome,
+                    @_icon-font-position: after,
+                    @_icon-font-size: @font-size__xl
+                );
+                &:after {
+                    top: 14px;
+                    .lib-css(font-weight, @font-weight__light);
+                }
+            }
+            .lib-icon-font(
+                @_icon-font-content:'\f0d7',
+                @_icon-font-size: @font-size__xl,
+                @_icon-font-line-height: @indent__m,
+                @_icon-font-vertical-align: @icon-font__vertical-align,
+                @_icon-font-text-hide: @icon-font__text-hide,
+                @_icon-font-display: @icon-font__display,
+                @_icon-font-position: after,
+                @_icon-font: @font-awesome
+            );
+
+            &:after {
+                background: transparent;
+                position: absolute;
+                right: 15px;
+                top: 18px;
+                z-index: 100;
+                width: 20px;
+                height: 20px;
+                text-align: center;
+                .lib-line-height(@indent__m);
+                .lib-css(font-weight, @font-weight__light);
+                cursor: pointer;
+            }
+        }
+        &__value {
+            display: -webkit-box;
+            .lib-vendor-prefix-display();
+        }
+
+        &__input {
+            display: none;
+            &:checked + .select-box__input-text {
+                display: block;
+            }
+        }
+
+        &__input-text {
+            display: none;
+            width: 98%;
+            padding: 15px;
+            .lib-css(background, @color-white);
+            margin: 0 auto;
+        }
+    }
+
+    #registry-popup-message {
+        position: absolute;
+        top: 25%;
+        left: 5%;
+    }
+
+    @-webkit-keyframes HideList {
+        from {
+            -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+        }
+        to {
+            -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+        }
+    }
+
+    @keyframes HideList {
+        from {
+            -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+        }
+        to {
+            -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+        }
+    }
+}
+
 //
-//    .registries {
-//        .select {
-//            .items-selections {
-//                //.lib-css(border, 1px solid @color-gray62);
-//            }
-//        }
-//    }
-//    .popup_custom_giftr
-//    {
-//        .lib-vendor-prefix-display();
-//        &:before {
-//            display: none;
-//        }
-//        position: fixed;
-//        align-content: center;
-//        .lib-vendor-prefix-justify();
-//        border-radius: 0;
-//        width: 23%;
-//        height: max-content;
-//        border: 0;
-//        .lib-vendor-box-align(center);
-//        left: 40%;
-//        min-width: 230px;
-//    }
-//    .modal-slide .modal-inner-wrap{
-//        overflow-y: visible;
-//        width: 100%;
-//    }
-//    .select-box {
-//        position: relative;
-//        display: block;
-//        //.lib-css(width, @table__width);
-//        margin: 0 auto;
-//        //.lib-css(font-family, @font-family-name__base);
-//        .lib-font-size(18px);
-//        //.lib-css(color, @color-m-dark-grey);
-//    }
-//
-//    .registry-list {
-//        .lib-icon-font(
-//            //@_icon-font-content:'\e607',
-//            //@_icon-font: @icon-font,
-//            //@_icon-font-size: 20px,
-//            //@_icon-font-line-height: @indent__m,
-//            //@_icon-font-vertical-align: @icon-font__vertical-align,
-//            //@_icon-font-position: @icon-font__position,
-//            //@_icon-font-text-hide: @icon-font__text-hide,
-//            //@_icon-font-display: @icon-font__display
-//        );
-//
-//        &:before {
-//            background: transparent;
-//            position: absolute;
-//            right: 37px ;
-//            top: 107px;
-//            z-index: 100;
-//            width: 30px;
-//            .lib-css(height, @indent__m);
-//            text-align: center;
-//            .lib-line-height(@indent__m);
-//            cursor: pointer;
-//        }
-//
-//        display: block;
-//    }
-//
-//    .ui-dialog-content {
-//        .lib-css(background, @color-white);
-//        //.lib-css(width, @table__width);
-//        padding: 1%;
-//    }
-//
-//    .add-to-giftr div {
-//        .giftr-dropdown {
-//            label {
-//                padding-top: 1px;
-//                border-bottom: 0;
-//            }
-//        }
-//    }
-//
-//    .add-to-giftr div.giftr-dropdown {
-//        opacity: 1;
-//    }
-//
-//    .select-gift {
-//        //.lib-css(color, @color-m-dark-blue);
-//        .lib-css(font-weight, @font-weight__semibold);
-//        .lib-font-size(15px);
-//    }
-//
-//    #confirm-add-to-registry {
-//        //.lib-css(background-color, @color-m-dark-bluex2);
-//        .lib-css(color, @color-white);
-//        text-align: center;
-//        //.lib-css(width, @table__width);
-//        margin-top: 5%;
-//        text-transform: uppercase;
-//        padding: 6%;
-//        box-shadow: none;
-//    }
-//
-//    .ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.giftr-dropdown {
-//        .lib-vendor-prefix-display();
-//
-//        &:before {
-//            display: none;
-//        }
-//
-//        .lib-css(background-color, @color-white);
-//        top: 40%;
-//        position: fixed;
-//        align-content: center;
-//        .lib-vendor-prefix-justify();
-//        border-radius: 0;
-//        width: 20%;
-//        height: max-content;
-//        border: 0;
-//        .lib-vendor-box-align(center);
-//        left: 40%;
-//        min-width: 230px;
-//    }
-//
-//    .select-box__current {
-//        position: relative;
-//        //.lib-css(border, 1px solid @color-gray62);
-//        cursor: pointer;
-//        outline: none;
-//        border-radius: 4px;
-//    }
-//
-//    .select-box__current:focus + .select-box__list {
-//        opacity: 1;
-//        -webkit-animation-name: none;
-//        animation-name: none;
-//        //.lib-css(border, 1px solid @color-gray62);
-//        .lib-css(background, @color-white);
-//    }
-//
-//    .select-box__current:focus + .select-box__list .select-box__option {
-//        cursor: pointer;
-//    }
-//
-//    .select-box__value {
-//        display: -webkit-box;
-//        .lib-vendor-prefix-display();
-//    }
-//
-//    .select-box__input {
-//        display: none;
-//    }
-//
-//    .select-box__input:checked + .select-box__input-text {
-//        display: block;
-//    }
-//
-//    .select-box__input-text {
-//        display: none;
-//        width: 98%;
-//        padding: 15px;
-//        .lib-css(background, @color-white);
-//        margin: 0 auto;
-//    }
-//
-//    .add-to-giftr div.giftr-dropdown label:last-child {
-//        padding: 4% !important;
-//    }
-//
-//    .select-box__list {
-//        position: absolute;
-//        //.lib-css(width, @table__width);
-//        .lib-list-reset-styles();
-//        opacity: 0;
-//        -webkit-animation-name: HideList;
-//        animation-name: HideList;
-//        -webkit-animation-duration: 0.5s;
-//        animation-duration: 0.5s;
-//        -webkit-animation-delay: 0.5s;
-//        animation-delay: 0.5s;
-//        -webkit-animation-fill-mode: forwards;
-//        animation-fill-mode: forwards;
-//        -webkit-animation-timing-function: step-start;
-//        animation-timing-function: step-start;
-//        box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
-//        //.lib-css(border, 1px solid @color-gray62);
-//        .lib-css(background, @color-white);
-//
-//        li {
-//            margin: 0;
-//        }
-//    }
-//
-//    #registry-popup-message {
-//        position: absolute;
-//        top: 25%;
-//        left: 5%;
-//    }
-//
-//    .select-box__option {
-//        display: block;
-//        padding: 15px;
-//        .lib-css(background, @color-white);
-//    }
-//
-//    .select-box__option:hover, .select-box__option:focus {
-//        .lib-css(color, @color-white);
-//        //.lib-css(background-color, @color-m-dark-blue_l);
-//    }
-//
-//    .select-box__current {
-//        height: 58px;
-//
-//    }
-//
-//    @-webkit-keyframes HideList {
-//        from {
-//            -webkit-transform: scaleY(1);
-//            transform: scaleY(1);
-//        }
-//        to {
-//            -webkit-transform: scaleY(0);
-//            transform: scaleY(0);
-//        }
-//    }
-//
-//    @keyframes HideList {
-//        from {
-//            -webkit-transform: scaleY(1);
-//            transform: scaleY(1);
-//        }
-//        to {
-//            -webkit-transform: scaleY(0);
-//            transform: scaleY(0);
-//        }
-//    }
-//}
-////
-////  Mobile (styles-m.css)
-////  _____________________________________________
-//.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
-//    .modal-slide .modal-inner-wrap{
-//        height: max-content!important;
-//        overflow-y: visible!important;
-//    }
-//
-//    .popup_custom_giftr{
-//        width: 100%!important;
-//    }
-//    .modal-popup{
-//        left: 0!important;
-//    }
-//}
-//
-//
+//  Mobile
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .modal-slide .modal-inner-wrap{
+        height: max-content!important;
+        overflow-y: visible!important;
+    }
+
+    .popup_custom_giftr{
+        width: 100%!important;
+    }
+    .modal-popup{
+        left: 0!important;
+    }
+}
+
+
