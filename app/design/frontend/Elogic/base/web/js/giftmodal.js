@@ -41,6 +41,13 @@ define([
 
         showModal: function () {
             $(this.options.modalWindow).modal('openModal').trigger('contentUpdated');
+            this.toggleCaretClass();
+        },
+
+        toggleCaretClass: function () {
+            $("#list-selections").on('click', function() {
+                $(this).toggleClass("open");
+            });
         }
 
     })

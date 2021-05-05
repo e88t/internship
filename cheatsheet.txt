@@ -1,3 +1,5 @@
+sudo ./phpshtorm.sh
+
 sudo chmod 777 app/etc/config.php
 cd /var/www/magento/
 sudo chmod 777 -R var/ pub/ generated/
