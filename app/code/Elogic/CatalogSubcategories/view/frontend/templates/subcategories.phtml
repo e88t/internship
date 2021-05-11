@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+/** @var \Magento\Framework\View\Element\Template $block */
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$subcategoriesViewModel = $block->getViewModel();
+$subCats = $subcategoriesViewModel->getCurrentCategory()->getChildrenCategories();
+?>
+<?php if ($subCats) :?>
+<ul class="subcategories-wrapper">
+    <?php  foreach ($subCats as $subcat) :?>
+        <li class="subcategories-li">
+            <div class="info">
+                <?php $subcatImage = $objectManager->create('Magento\Catalog\Model\Category')->load($subcat->getId()); ?>
+                <a class="link" href="<?php echo $subcat->getUrl(); ?>">
+                    <img src="<?php echo $subcatImage->getImageUrl(); ?>" alt="<?php echo $subcat->getName(); ?>" >
+                    <span><?php echo $subcat->getName(); ?></span>
+                </a>
+            </div>
+        </li>
+    <?php endforeach; ?>
+</ul>
+<?php endif;?>

@@ -1,0 +1,52 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+    .subcategories-wrapper {
+        .lib-vendor-prefix-display();
+        justify-content: space-between;
+        padding: 0;
+
+        .info {
+            .lib-vendor-prefix-display();
+            justify-content: center;
+            .link {
+                position: relative;
+                img {
+                    margin-bottom: 15px;
+                    &:hover {
+                        opacity: 0.6;
+                    }
+                }
+                span {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+}
+
+//
+//  Desctop, more than 1024px
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .subcategories-wrapper {
+        justify-content: space-between;
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .subcategories-wrapper {
+        .lib-vendor-prefix-flex-direction(column);
+        justify-content: flex-start;
+    }
+}
