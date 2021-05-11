@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <container name="catalog.subcategories.container" htmlTag="div" htmlClass="catalog-subcategories-container" label="Catalog Subcategories Container">
+            <block class="Magento\Framework\View\Element\Template" name="catalog.subcategories" template="Elogic_CatalogSubcategories::subcategories.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Elogic\CatalogSubcategories\ViewModel\CatalogSubcategoriesViewModel</argument>
+                </arguments>
+            </block>
+        </container>
+
+        <move element="catalog.subcategories.container" destination="content" before="-"/>
+    </body>
+</page>
